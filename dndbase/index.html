@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiceBase</title>
+    <link rel="stylesheet" href="assets/CSS/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script type="module" defer src="assets/javascript/content.js"></script>
+</head>
+<body>
+    <header>
+        <h1>DiceBase</h1>
+        <nav>
+            <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#License">License</a></li>
+                <li><a href="https://github.com/doctor-versum/DnDbase" target="_blank">GitHub Repository</a></li>
+            </ul>
+        </nav>
+        <img src="assets/images/logo.png" alt="DnD Logo" class="header-image">
+        <div class="user">
+          <button id="loginBtn" class="user">login</button>
+          <button id="userBtn" class="user" style="display: none;">[display-name]</button>
+          <div id="buttonDrawer" style="display: none;">
+            <button id="charactersBtn">characters</button>
+            <button id="settingsBtn">settings</button>
+            <button id="logoutBtn">log out</button>
+          </div>
+        </div>
+    </header>    
+
+    <input type="file" id="fileInput" style="display:none" accept="image/*" onchange="uploadImage(event)" />
+
+  <main>
+    <!-- Container für Markdown-Inhalte -->
+    <div class="content">
+      <p>Loading content...</p>
+    </div>
+
+    <!-- Container für den iFrame -->
+    <div class="iframe-container" style="display: none;">
+      <!-- Der iFrame wird hier dynamisch eingefügt -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DiceBase. Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1">CC BY-NC-SA 4.0</a>.</p>
+  </footer>
+</body>
+</html>

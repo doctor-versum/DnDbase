@@ -1,0 +1,9 @@
+{
+    "people": {
+        "Miseong":"people/miseong",
+        "silk":"people/silk"
+    },
+    "places": {
+        "school":"places/school"
+    }
+}

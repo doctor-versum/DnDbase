@@ -1,0 +1,655 @@
+:root {
+    /* Color inputs */
+    --accent-color: rgb(161, 0, 135);
+    --text-color: #f4f4f9;
+    --border-color: #000000;
+    --background-color: #181818;
+    --background-color-one: #3f3f3f;
+    --background-color-two: #4f4f4f;
+    --background-color-three: #333;
+    --background-color-four: #222;
+    --background-color-five: #666;
+
+    /* Color assignments */
+    --nav-hover-background-color: var(--accent-color);
+    --link-color: var(--accent-color);
+    --link-hover-color: var(--accent-color);
+    --main-background-color: var(--background-color-three);
+    --main-box-shadow: rgba(255, 255, 255, 0.1);
+    --button-background-color: var(--background-color-one);
+    --button-hover-background-color: var(--background-color-two);
+    --button-border-color: var(--border-color);
+    --button-delete-border-color: red;
+    --detail-header-background-color: var(--background-color-one);
+    --detail-header-hover-background-color: var(--background-color-two);
+    --detail-content-background-color: var(--background-color-three);
+    --tooltip-background-color: var(--background-color);
+    --tooltip-border-color: var(--border-color);
+}
+
+/* Grundlegendes Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Die gesamte Seite nimmt mindestens die Bildschirmhöhe ein */
+html, body {
+    height: 100%;
+}
+
+a{
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+img {
+    max-width: 30vw;
+    border-radius: 20px;
+}
+
+/* Container für das gesamte Layout */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Die Seite ist immer mindestens so hoch wie der Bildschirm */
+}
+
+/* Allgemeine Hintergrundfarbe und Textfarbe */
+body {
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header-Stil */
+header {
+    background-color: var(--background-color-three);
+    color: var(--text-color);
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0;  /* Verhindert, dass der Header schrumpft */
+    position: relative;  /* Ermöglicht absolute Positionierung im Header */
+    height: 100px; /* Höhe des Headers */
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+header img.header-image {
+    position: absolute;
+    bottom: 25%; /* Stellt sicher, dass das Bild am unteren Rand des Headers ausgerichtet ist */
+    left: 0; /* Setzt das Bild an die linke Seite */
+    width: auto; /* Erhöht die Breite des Bildes */
+    height: 50%; /* Höhe passt sich der Breite an, um das Bildverhältnis beizubehalten */
+}
+
+header div.user {
+    position: absolute;
+    bottom: 25%; /* Stellt sicher, dass das Bild am unteren Rand des Headers ausgerichtet ist */
+    right: 0; /* Setzt das Bild an die linke Seite */
+    top: 0;
+    margin-right: 3%;
+    margin-top: 3%;
+}
+
+header button.user {
+    padding: 10%;
+    background-color: var(--button-background-color);
+    border-color: var(--button-border-color);
+    color: var(--text-color);
+    font-size: 100%;
+    border-style: solid;
+    padding: 0.5rem;
+    border-radius: 100px;
+    border-width: 2px;
+    transition: background-color 0.2s;
+}
+
+header button.user:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+/* Styling für das Drawer, das verborgen ist */
+#buttonDrawer {
+    display: none;  /* Standardmäßig verborgen */
+    position: absolute;
+    padding: 10%;
+    background-color: var(--button-background-color);
+    border-color: var(--button-border-color);
+    color: var(--text-color);
+    font-size: 100%;
+    border-style: solid;
+    border-width: 2px;
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin: 3%;
+    transition: background-color 0.2s;
+}
+
+#buttonDrawer button {
+    padding: 10%;
+    background-color: var(--button-background-color);
+    border-color: var(--button-border-color);
+    color: var(--text-color);
+    font-size: 100%;
+    border-style: solid;
+    padding: 0.5rem;
+    border-radius: 100px;
+    margin-top: 3%;
+    width: 100%;
+    border-width: 2px;
+    transition: background-color 0.2s;
+}
+
+#buttonDrawer button:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: var(--nav-hover-background-color);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+/* Main Content */
+main {
+    padding: 20px;  /* Gleicher Abstand oben, unten, links und rechts */
+    width: calc(100% - 40px);  /* Subtrahiert das Padding von der Gesamtbreite */
+    max-width: 100%;
+    margin: 20px auto;
+    background-color: var(--main-background-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--main-box-shadow);
+    flex-grow: 1; /* Stellt sicher, dass der Main-Bereich den verbleibenden Raum einnimmt */
+}
+
+/* Container für Markdown-Inhalte */
+.content {
+    max-width: 100%;  /* Maximale Breite des Inhalts */
+    margin: 0 auto; /* Zentriert den Inhalt */
+}
+
+/* Footer */
+footer {
+    background-color: var(--background-color-four);
+    color: var(--text-color);
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    margin-top: auto;  /* Stellt sicher, dass der Footer am unteren Rand bleibt */
+}
+
+footer a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--link-hover-color);
+}
+
+.iframe-container {
+    height: 100%;
+    border-radius: 8px;
+}
+
+
+.highlight-text {
+    color: var(--accent-color);
+}
+
+.custom-link {
+    background-color: var(--accent-color);
+    padding: 4px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-color);
+    margin: 3px;
+    transition: background-color 0.3s;
+}
+
+.custom-link:hover {
+    background-color: var(--accent-color);
+}
+
+/* Container für das Bild und die Tabelle */
+.overview {
+    display: flex; /* Aktiviert Flexbox */
+    align-items: stretch; /* Stellt sicher, dass die Höhe des Bildes und der Tabelle übereinstimmen */
+    margin-bottom: 10px;
+}
+
+/* Das Bild anpassen */
+.overview-image {
+    max-width: 20vw; /* Maximale Breite des Bildes 5% der Bildschirmbreite */
+    max-height: 20vh; /* Maximale Höhe des Bildes 5% der Bildschirmhöhe */
+    width: auto;  /* Automatische Breite, damit die Proportionen erhalten bleiben */
+    height: auto; /* Automatische Höhe, damit die Proportionen erhalten bleiben */
+    object-fit: contain; /* Verhindert Verzerrungen und passt das Bild an */
+    display: block; /* Block-Layout für das Bild */
+    border-radius: 10px;
+    flex-shrink: 0; /* Verhindert, dass das Bild in der Höhe schrumpft */
+}
+
+/* Container für die Tabelle */
+.overview-table {
+    display: flex;
+    flex-direction: column; /* Tabelle in Spalten anordnen */
+    align-items: stretch; /* Stellt sicher, dass die Tabelle die gleiche Höhe wie das Bild hat */
+    height: auto; /* Höhe automatisch an das Bild anpassen */
+    flex-grow: 1; /* Die Tabelle wächst und füllt den verbleibenden Platz */
+    overflow-x: auto; /* Ermöglicht horizontales Scrollen, wenn die Tabelle zu breit wird */
+}
+
+/* Tabelle anpassen */
+.overview-table table {
+    width: 99%; /* Die Breite der Tabelle passt sich automatisch an */
+    height: 100%; /* Die Tabelle nimmt die gesamte Höhe des Containers ein */
+    table-layout: auto; /* Auto-Layout für Zellen, damit min-width funktioniert */
+    border: none;
+    margin-left: 10px;
+    border-collapse: separate; /* Verhindert das Zusammenklappen von Zellen */
+}
+
+#search-bar {
+    background-color: var(--background-color-one);
+    border-color: var(--border-color);
+    border-style: solid;
+    padding: 0.5rem;
+    border-radius: 100px;
+}
+
+/* Container für jedes Charakterelement */
+.character-item {
+    display: flex;  /* Flexbox für horizontale Anordnung */
+    margin-bottom: 20px;  /* Abstand zwischen den Charakteren */
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--background-color-one);  /* Hintergrundfarbe */
+    transition: background-color 0.3s;
+}
+
+.character-item:hover {
+    background-color: var(--background-color-two);  /* Hover-Effekt */
+}
+
+/* Container für das Charakterbild */
+.character-image-container {
+    flex-shrink: 0;  /* Verhindert, dass das Bild schrumpft */
+    margin-right: 20px;  /* Abstand zum Text */
+}
+
+.character-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;  /* Bild bleibt proportional */
+    border-radius: 4px;
+}
+
+/* Container für die Charakterinformationen */
+.character-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--background-color-four);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* Stil für den Charakternamen */
+.character-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Stil für den Charakternamen */
+.character-page-name {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Stil für die Charakterbeschreibung */
+.character-description {
+    font-size: 16px;
+    color: var(--background-color-five);
+}
+
+.character-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 10px;
+}
+
+.character-page-image {
+    max-width: 200px;
+    width: 20%;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 8px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.character-summary {
+    font-size: 0.9rem;
+    color: var(--background-color-five);
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detail-section {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--background-color-four);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.detail-header {
+    background-color: var(--detail-header-background-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    padding: 0.5rem;
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+.detail-header:hover {
+    background-color: var(--detail-header-hover-background-color);
+}
+
+.detail-content {
+    padding: 0.5rem;
+    display: none;
+    background-color: var(--detail-content-background-color);
+    border-radius: 8px;
+}
+
+.new-character-btn {
+    background-color: var(--button-background-color);
+    border-color: var(--button-border-color);
+    color: var(--text-color);
+    font-size: 100%;
+    border-style: solid;
+    border-radius: 100px;
+    border-width: 2px;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    transition: background-color 0.2s;
+}
+
+.new-character-btn:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+.save-button {
+    background-color: var(--button-background-color);
+    border-color: var(--button-border-color);
+    color: var(--text-color);
+    font-size: 100%;
+    border-style: solid;
+    border-radius: 100px;
+    border-width: 2px;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    transition: background-color 0.2s;
+}
+
+.save-button:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+/* Container, der die Buttons enthält */
+.button-container {
+    display: flex;
+    justify-content: center; /* Zentriert die Buttons horizontal */
+    align-items: center; /* Zentriert die Buttons vertikal (optional) */
+}
+
+/* Beide Buttons behalten ihren Stil */
+.character-deleteBtn, .character-editBtn {
+    background-color: var(--button-background-color);
+    border-color: var(--button-border-color);
+    color: var(--text-color);
+    font-size: 100%;
+    border-style: solid;
+    border-radius: 100px;
+    border-width: 2px;
+    padding: 10px 20px;
+    transition: background-color 0.2s;
+    margin: 0 10px; /* Abstand zwischen den Buttons */
+}
+
+.character-deleteBtn:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+.character-deleteBtn {
+    border-color: var(--button-delete-border-color);
+}
+
+.character-editBtn {
+    border-color: var(--border-color);
+}
+
+.character-editBtn:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+.input-container {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.tooltip-icon {
+    margin-left: 5px;
+    cursor: pointer;
+    color: var(--text-color);
+    width: 20px;
+}
+
+.tooltip-box {
+    display: none;
+    position: absolute;
+    background: var(--tooltip-background-color);
+    border: 1px solid var(--tooltip-border-color);
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+div.content input {
+    background-color: var(--background-color-one);
+    border-style: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    width: 98%;
+    color: var(--text-color);
+}
+
+div.content textarea {
+    background-color: var(--background-color-one);
+    border-style: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    color: var(--text-color);
+    width: 98%;
+    height: 500px; /* Passt die Höhe automatisch an den Inhalt an */
+    resize: none; /* Verhindert das Ändern der Größe */
+    overflow-y: hidden; /* Verhindert Scrollbalken */
+}
+
+.delete-popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.delete-popup-box {
+    background-color: var(--background-color-four);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    z-index: 1;
+}
+
+.delete-popup-buttons button {
+    background-color: var(--button-background-color);
+    color: var(--text-color);
+    font-size: 100%;
+    border-style: solid;
+    border-radius: 100px;
+    border-width: 2px;
+    padding: 10px 20px;
+    transition: background-color 0.2s;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.delete-popup-buttons button:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+.delete-popup-cancel {
+    border-color: var(--button-border-color);
+}
+
+.delete-popup-delete {
+    border-color: var(--button-delete-border-color);
+}
+ 
+.settings-section {
+    margin-bottom: 20px;
+    background-color: var(--background-color-four);
+    border-radius: 8px;
+    padding: 8px;
+}
+.settings-header {
+    cursor: pointer;
+    background-color: var(--detail-header-background-color);
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+.settings-header:hover {
+    background-color: var(--detail-header-hover-background-color);
+}
+.settings-content.hidden {
+    display: none;
+}
+.settings-content {
+    padding: 10px;
+    background-color: var(--detail-content-background-color);
+    border-radius: 8px;
+    border-top: none;
+}
+
+.color-picker-row {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+.color-picker-row span {
+    flex: 0 0 auto;
+    margin-right: 5px;
+}
+.color-picker-row input[type="color"] {
+    flex: 1 1 auto;
+}
+
+::-webkit-scrollbar { width: 0px; height: 0px; }
+
+/* Responsives Design für kleinere Bildschirme */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul li {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .header-image {
+        width: 50px;  /* Kleinere Bildgröße für kleinere Bildschirme */
+    }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/CSS/main.css">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: #e74c3c;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+        a {
+            background-color: #e74c3c;
+            padding: 4px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: white;
+            margin: 3px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #922c20;
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #333;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Alle Links mit der Klasse "open-in-top" auswählen
+            const links = document.querySelectorAll('.open-in-top');
+    
+            // Eventlistener für jeden Link hinzufügen
+            links.forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault(); // Standardverhalten (z. B. neues Tab) verhindern
+                    const targetUrl = link.href; // Ziel-URL holen
+                    window.top.location.href = targetUrl; // Hauptseite auf neue URL setzen
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <p>Oops! The page you were looking for doesn't exist.</p><br>
+        <a href="https://github.com/doctor-versum/InsectorWiki" target="_blank">create it!</a> or <a href="../index.html" target="_blank" class="open-in-top">Go back to the homepage</a>
+    </div>
+</body>
+</html>
