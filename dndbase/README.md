@@ -1,3 +1,1 @@
-# InsectorWiki
-
 [License](LICENSE.md)
